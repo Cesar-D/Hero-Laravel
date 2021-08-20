@@ -33,12 +33,23 @@
                         <td>{{$item->coins}}</td>
                         <td>{{$item->xp}}</td>
                         <td>
-                            <a class="btn btn-warning" href="{{route('admin.heroes.edit',['id'=>$item->id])}}"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger" href="{{route('admin.heroes')}}"><i class="bi bi-trash-fill"></i></a>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="btn btn-warning" href="{{route('admin.heroes.edit',['id'=>$item->id])}}"><i class="bi bi-pencil-square"></i></a>
+                                </div>
+                                <div class="col" style="left: -50px;">
+                                    <form action="{{route('admin.heroes.destroy',['id'=>$item->id])}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>                          
                         </td>
                     </tr>
                 @endforeach
-                
             </tbody>
         </table>
     </div>

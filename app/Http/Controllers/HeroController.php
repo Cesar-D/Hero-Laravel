@@ -52,7 +52,11 @@ class HeroController extends Controller
         return view('admin.heroes.edit',['heroes' => $heroes]);
     }
 
-   
+    public function destroy($id){
+        $hero = Hero::find($id);
+        $hero->delete();
+        return redirect()->route('admin.heroes');
+    }
 
     
 }

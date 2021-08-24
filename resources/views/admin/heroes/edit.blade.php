@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
         <h1>Editar heroe </h1>
-        <form action="{{route('admin.heroes.update',['id'=>$heroes->id])}}" method="post">
+        <form action="{{route('heroes.update',['id'=>$heroes->id])}}" method="post">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <label for="name">Nombre</label>
                 <input type="text" class="form-control" id="name" name="name"  value="{{$heroes->name}}" placeholder="Ingrese un nombre" required>

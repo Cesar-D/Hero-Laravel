@@ -4,7 +4,7 @@
         <h1>Listado de heroes</h1>
     </div>
     <div class="row">
-        <a class="btn btn-primary mb-2 mt-2" href="{{route('admin.heroes.create')}}"><i class="bi bi-person-plus-fill"> </i>Agregar heroe</a>
+        <a class="btn btn-primary mb-2 mt-2" href="{{route('heroes.create')}}"><i class="bi bi-person-plus-fill"> </i>Agregar heroe</a>
     </div>
     <div class="row">
         <table class="table table-hover">
@@ -35,10 +35,10 @@
                         <td>
                             <div class="row">
                                 <div class="col">
-                                    <a class="btn btn-warning" href="{{route('admin.heroes.edit',['id'=>$item->id])}}"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-warning" href="{{route('heroes.edit',['id'=>$item->id])}}"><i class="bi bi-pencil-square"></i></a>
                                 </div>
                                 <div class="col" style="left: -50px;">
-                                    <form action="{{route('admin.heroes.destroy',['id'=>$item->id])}}" method="POST">
+                                    <form action="{{route('heroes.destroy',['id'=>$item->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">

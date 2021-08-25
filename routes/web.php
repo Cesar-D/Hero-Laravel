@@ -17,10 +17,10 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'],function(){
     Route::get('/', 'AdminController@index')->name('admin.index');
-    Route::get('enemys','EnemyController@index')->name('admin.enemys');
     
     Route::resource('item','ItemController');
     Route::resource('heroes','HeroController');
+    Route::resource('enemy','EnemyController');
     
 });
 

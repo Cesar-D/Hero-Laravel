@@ -51,7 +51,10 @@ class BSController extends Controller
             }
             array_push($eventos,$ev);
         }
-        dd($eventos);
-        // return view('admin.bs.index');
+        return view('admin.bs.index',[
+            "events" => $eventos,
+            "heroName" =>$hero->name,
+            "enemyName" =>$enemy->name,
+        ]);
     }
 }

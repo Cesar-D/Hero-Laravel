@@ -9,8 +9,12 @@ use App\Enemi;
 class BSController extends Controller
 {
     public function index(){
-        $hero=Hero::find(5)->first();
-        $enemy=Enemi::find(1)->first();
+        return view('admin.bs.index',$this->runAutoBattle(5,1));
+    }
+
+    public function runAutoBattle($heroId,$enemyId){
+        $hero = Hero::find($heroId)->first();
+        $enemy = Enemi::find($enemyId)->first();
 
         $eventos=[];
         while($hero->hp>0 && $enemy->hp >0){
@@ -28,8 +32,14 @@ class BSController extends Controller
                 } else{
                     $ev = [
                         "winner" => "hero",
-                        "text" => $hero->name . " acabo con la vida de " . $enemy->name
+                        "text" => $hero->name . " acabo con la vida de " . $enemy->name . "y gano una experiencia de: " . $enemy->xp
                     ];
+                    $hero->xp = $hero->xp + $enemy->xp;
+                    if ($hero->xp >= $hero->level->xp) {
+                        $hero->xp=0;
+                        $hero->level_id +=1; 
+                    }
+                    $hero->save();
                 }
             }else{
                 $hp = $hero->def - $enemy->atq;
@@ -51,10 +61,10 @@ class BSController extends Controller
             }
             array_push($eventos,$ev);
         }
-        return view('admin.bs.index',[
+        return[
             "events" => $eventos,
             "heroName" =>$hero->name,
             "enemyName" =>$enemy->name,
-        ]);
+        ];
     }
 }

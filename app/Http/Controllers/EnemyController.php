@@ -100,6 +100,14 @@ class EnemyController extends Controller
         $enemy->def=$request->input('def');
         $enemy->coins=$request->input('coins');
         $enemy->xp=$request->input('xp');
+        
+        if ($request->hasFile('img_path')) {
+            $file = $request->file('img_path');
+            $name = time() . "_" . $file->getClientOriginalName();
+            $file->move(public_path() . '/images/', $name);
+            $enemy->img_path = $name;
+        }
+
 
         if(!$enemy->save()){
             echo "error";

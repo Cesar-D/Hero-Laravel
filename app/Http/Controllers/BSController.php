@@ -65,6 +65,8 @@ class BSController extends Controller
             "events" => $eventos,
             "heroName" =>$hero->name,
             "enemyName" =>$enemy->name,
+            "heroAvatar" =>$hero->img_path,
+            "enemyAvatar" =>$enemy->img_path
         ];
     }
     public function runManualBattle($heroId,$enemyId){

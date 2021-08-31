@@ -14,6 +14,18 @@
             <h2>ENEMY: {{$enemyName}}</h2>
         </div>
     </div>
+    <div class="row text-center text-white mt-2">
+        <div class="col-5 bg-primary">
+            <img src="{{ asset('images/heroes/' . $heroAvatar)}}" style=" width: 100px; margin-bottom: 10px;
+            margin-top: 10px;">
+            
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-5 bg-danger">
+            <img src="{{asset('images/enemys/' . $enemyAvatar)}}"style="width: 100px;margin-bottom: 10px;margin-top: 10px;">
+        </div>
+    </div>
     <div class="row">
         <div class="col text-center text-white mt-2 bg-info">
             <h2>Eventos de batalla</h2>

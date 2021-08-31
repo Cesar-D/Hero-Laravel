@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/','ApiController@index');
 Route::get('heroes','ApiController@getAllHeroes');
 Route::get('heroes/{id}','ApiController@getHero');
+Route::get('enemys','ApiController@getAllEnemy');
+Route::get('enemys/{id}','ApiController@getEnemy');

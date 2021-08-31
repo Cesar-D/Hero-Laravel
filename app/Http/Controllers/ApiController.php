@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Hero;
+use App\Enemi;
 
 class ApiController extends Controller
 {
@@ -32,7 +33,7 @@ class ApiController extends Controller
         if (isset($hero)) {
             $res =[
                 "status" => "ok",
-                "message" => "Obtener heroe",
+                "message" => "Heroe obtenido",
                 "data" => $hero
             ];
             
@@ -40,6 +41,36 @@ class ApiController extends Controller
             $res =[
                 "status" => "error",
                 "message" => "Hero no encontrado"
+            ];
+        }
+        return response()->json($res,200);
+    }
+
+    public function getAllEnemy()
+    {
+        $enemy = Enemi::all();
+        $res =[
+            "status" => "ok",
+            "message" => "Lista de enemigos",
+            "data" => $enemy
+        ];
+        return response()->json($res,200);
+    }
+
+    public function getEnemy($id)
+    {
+        $enemy = Enemi::find($id);
+        if (isset($enemy)) {
+            $res =[
+                "status" => "ok",
+                "message" => "Enemigo encontrado",
+                "data" => $enemy
+            ];
+            
+        }else{
+            $res =[
+                "status" => "error",
+                "message" => "Enemigo no encontrado"
             ];
         }
         return response()->json($res,200);

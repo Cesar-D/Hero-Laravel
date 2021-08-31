@@ -83,6 +83,8 @@ class EnemyController extends Controller
     public function destroy($id)
     {
         $enemy = Enemi::find($id);
+        $filePath = public_path() . '/images/enemies/' . $enemy->img_path;
+        \File::delete($filePath);
         $enemy->delete();
         return redirect()->route('enemy.index');
     }
@@ -104,7 +106,7 @@ class EnemyController extends Controller
         if ($request->hasFile('img_path')) {
             $file = $request->file('img_path');
             $name = time() . "_" . $file->getClientOriginalName();
-            $file->move(public_path() . '/images/', $name);
+            $file->move(public_path() . '/images/enemies', $name);
             $enemy->img_path = $name;
         }
 

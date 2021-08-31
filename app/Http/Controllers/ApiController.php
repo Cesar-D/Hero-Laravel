@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Hero;
 use App\Enemi;
+use App\Item;
 
 class ApiController extends Controller
 {
@@ -71,6 +72,36 @@ class ApiController extends Controller
             $res =[
                 "status" => "error",
                 "message" => "Enemigo no encontrado"
+            ];
+        }
+        return response()->json($res,200);
+    }
+
+    public function getAllItems()
+    {
+        $item = Item::all();
+        $res =[
+            "status" => "ok",
+            "message" => "Lista de items",
+            "data" => $item
+        ];
+        return response()->json($res,200);
+    }
+
+    public function getItem($id)
+    {
+        $item = Item::find($id);
+        if (isset($item)) {
+            $res =[
+                "status" => "ok",
+                "message" => "Item encontrado",
+                "data" => $item
+            ];
+            
+        }else{
+            $res =[
+                "status" => "error",
+                "message" => "Item no encontrado"
             ];
         }
         return response()->json($res,200);

@@ -22,3 +22,5 @@ Route::get('heroes','ApiController@getAllHeroes');
 Route::get('heroes/{id}','ApiController@getHero');
 Route::get('enemys','ApiController@getAllEnemy');
 Route::get('enemys/{id}','ApiController@getEnemy');
+Route::get('items','ApiController@getAllItems');
+Route::get('items/{id}','ApiController@getItem');

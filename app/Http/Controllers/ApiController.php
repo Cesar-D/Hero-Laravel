@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Hero;
 use App\Enemi;
 use App\Item;
+use App\Http\Controllers\BSController;
 
 class ApiController extends Controller
 {
@@ -104,6 +105,17 @@ class ApiController extends Controller
                 "message" => "Item no encontrado"
             ];
         }
+        return response()->json($res,200);
+    }
+
+    public function runManualBS($heroId,$enemyId)
+    {
+        $bs = BSController::runAutoBattle($heroId,$enemyId);
+        $res=[
+            "status" => "ok",
+            "message" => "Sisetma de batalla entre " . $bs["heroName"] . " y " . $bs["enemyName"],
+            "data" => $bs
+        ];
         return response()->json($res,200);
     }
 }

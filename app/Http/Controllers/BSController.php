@@ -12,7 +12,7 @@ class BSController extends Controller
         return view('admin.bs.index',$this->runAutoBattle(5,1));
     }
 
-    public function runAutoBattle($heroId,$enemyId){
+    public static function runAutoBattle($heroId,$enemyId){
         $hero = Hero::find($heroId)->first();
         $enemy = Enemi::find($enemyId)->first();
 
@@ -69,6 +69,7 @@ class BSController extends Controller
             "enemyAvatar" =>$enemy->img_path
         ];
     }
+
     public function runManualBattle($heroId,$enemyId){
         $hero = Hero::find($heroId)->first();
         $enemy = Enemi::find($enemyId)->first();
